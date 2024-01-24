@@ -1,3 +1,3 @@
-# csc 3100 devops
+# csc 3100 
 ## About Nolen
 I like playing around with computers and gaming.
