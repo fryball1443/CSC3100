@@ -18,6 +18,18 @@
         <input id="txtEmail" type="email" class="form-control">
         <label for="txtPassword" class="form-label">Password</label>
         <input id="txtPassword" type="password" class="form-control">
+        <label for="txtStreetAddress1" class="form-label">Street Address 1</label>
+        <input id="txtStreetAddress1" type="text" class="form-control">
+        <label for="txtStreetAddress2" class="form-label">Street Address 2</label>
+        <input id="txtStreetAddress2" type="text" class="form-control">
+        <label for="txtCity" class="form-label">City</label>
+        <input id="txtCity" type="text" class="form-control">
+        <label for="txtState" class="form-label">State</label>
+        <input id="txtState" type="text" class="form-control">
+        <label for="txtZIP" class="form-label">ZIP</label>
+        <input id="txtZIP" type="text" class="form-control">
+        <label for="txtMobilePhone" class="form-label">Mobile Phone</label>
+        <input id="txtMobilePhone" type="text" class="form-control">
         <button id="btnSubmit" type="button" class="btn btn-primary col-12 mt-2">Submit</button> 
         <button id="btnReset"  type="button" class="btn btn-secondary col-12 mt-2">Clear Form</button>   
       </form>
@@ -32,7 +44,13 @@
       let strLastName = $('#txtLastName').val();
       let strEmail = $('#txtEmail').val();
       let strPassword = $('#txtPassword').val();
-      
+      let strStreetAddress1 = $('#txtStreetAddress1').val();
+      let strStreetAddress2 = $('#txtStreetAddress2').val();
+      let strCity = $('#txtCity').val();
+      let strState = $('#txtState').val();
+      let strZIP = $('#txtZIP').val();
+      let strMobilePhone = $('#txtMobilePhone').val();
+
       let blnError = false;
       let strErrorMessage = '';
       if (strFirstName.length < 1) {
@@ -51,6 +69,27 @@
         blnError = true;
         strErrorMessage = strErrorMessage + 'Password cannot be blank.';
       }
+      if (strStreetAddress1.length < 1) {
+        blnError = true;
+        strErrorMessage = strErrorMessage + 'Street Address 1 cannot be blank.';
+      }
+      if (strCity.length < 1) {
+        blnError = true;
+        strErrorMessage = strErrorMessage + 'City cannot be blank.';
+      }
+      if (strState.length < 1) {
+        blnError = true;
+        strErrorMessage = strErrorMessage + 'State cannot be blank.';
+      }
+      if (strZIP.length < 1) {
+        blnError = true;
+        strErrorMessage = strErrorMessage + 'ZIP cannot be blank.';
+      }
+      if (strMobilePhone.length < 1) {
+        blnError = true;
+        strErrorMessage = strErrorMessage + 'Mobile Phone cannot be blank.';
+      }
+
       if (blnError == true) {
         console.log(strErrorMessage);
       } else {
