@@ -1,19 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>hello nolen</title>
-</head>
-<body>
-  <h1>This is h1</h1>
-  <h2>This is h2</h2>
-  <h2>This is h3</h2>
-  <h2>This is h4</h2>
-  this is a paragraph
-  <form>
-    <input id="txtFirstName" placeholder="FirstName" aria-label="First Name">
+<div class="mb-3">
+  <label for="clothingTop" class="form-label">Clothing Top</label>
+  <select class="form-select" id="clothingTop" required>
+      <option value="" disabled selected>Select a clothing top</option>
+  </select>
+</div>
+<div class="mb-3">
+  <label for="clothingBottom" class="form-label">Clothing Bottom</label>
+  <select class="form-select" id="clothingBottom" required>
+      <option value="" disabled selected>Select a clothing bottom</option>
+  </select>
+</div>
+<div class="mb-3">
+  <label for="shoes" class="form-label">Shoes</label>
+  <select class="form-select" id="shoes" required>
+      <option value="" disabled selected>Select shoes</option>
+  </select>
+</div>
 
-  </form>
-</body>
-</html>
+<script>
+  $(document).ready(function () {
+      // Populate clothing top select box
+      $.get("https://www.swollenhippo.com/getTopsByAPIKey.php?APIKey=Mickey2024!", function (data) {
+          var tops = JSON.parse(data);
+          var clothingTopSelect = $("#clothingTop");
+          tops.forEach(function (top) {
+              clothingTopSelect.append(new Option(top.name, top.id));
+          });
+      });
+
+      // Populate clothing bottom select box
+      $.get("https://www.swollenhippo.com/getBottomsByAPIKey.php?APIKey=Mickey2024!", function (data) {
+          var bottoms = JSON.parse(data);
+          var clothingBottomSelect = $("#clothingBottom");
+          bottoms.forEach(function (bottom) {
+              clothingBottomSelect.append(new Option(bottom.name, bottom.id));
+          });
+      });
+
+      // Populate shoes select box
+      $.get("https://www.swollenhippo.com/getShoesByAPIKey.php?APIKey=Mickey2024!", function (data) {
+          var shoes = JSON.parse(data);
+          var shoesSelect = $("#shoes");
+          shoes.forEach(function (shoe) {
+              shoesSelect.append(new Option(shoe.name, shoe.id));
+          });
+      });
+  });
+</script>
