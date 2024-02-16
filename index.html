@@ -3,106 +3,160 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>hello nolen</title>
+  <title>Online Clothing Store Order Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body class="bg-dark">
-  <div class="col-10 col-md-6 offset-1 offset-md-3 offset-lg-4 card mt-5 test-black">
-    <div class="card-body"> 
-      <form>
-        <label for="txtFirstName" class="form-label">First Name</label>
-        <input id="txtFirstName" placeholder="FirstName" aria-label="First Name" class="form-control">
-        <label for="txtLastName" class="form-label">Last Name</label>
-        <input id="txtLastName" type="text" aria-label="Last Name" class="form-control">
-        <label for="txtEmail" class="form-label">Email</label>
-        <input id="txtEmail" type="email" class="form-control">
-        <label for="txtPassword" class="form-label">Password</label>
-        <input id="txtPassword" type="password" class="form-control">
-        <label for="txtStreetAddress1" class="form-label">Street Address 1</label>
-        <input id="txtStreetAddress1" type="text" class="form-control">
-        <label for="txtStreetAddress2" class="form-label">Street Address 2</label>
-        <input id="txtStreetAddress2" type="text" class="form-control">
-        <label for="txtCity" class="form-label">City</label>
-        <input id="txtCity" type="text" class="form-control">
-        <label for="txtState" class="form-label">State</label>
-        <input id="txtState" type="text" class="form-control">
-        <label for="txtZIP" class="form-label">ZIP</label>
-        <input id="txtZIP" type="text" class="form-control">
-        <label for="txtMobilePhone" class="form-label">Mobile Phone</label>
-        <input id="txtMobilePhone" type="text" class="form-control">
-        <button id="btnSubmit" type="button" class="btn btn-primary col-12 mt-2">Submit</button> 
-        <button id="btnReset"  type="button" class="btn btn-secondary col-12 mt-2">Clear Form</button>   
-      </form>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-10 col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Online Clothing Store Order Page</h2>
+            <form id="orderForm">
+              <div class="mb-3">
+                <label for="txtFirstName" class="form-label">First Name</label>
+                <input id="txtFirstName" placeholder="First Name" aria-label="First Name" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label for="txtLastName" class="form-label">Last Name</label>
+                <input id="txtLastName" placeholder="Last Name" aria-label="Last Name" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label for="txtEmail" class="form-label">Email Address</label>
+                <input id="txtEmail" type="email" placeholder="Email Address" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label for="txtShippingAddress" class="form-label">Shipping Address</label>
+                <input id="txtShippingAddress" placeholder="Shipping Address" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label for="txtBillingAddress" class="form-label">Billing Address</label>
+                <input id="txtBillingAddress" placeholder="Billing Address" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label for="txtPhoneNumber" class="form-label">Phone Number</label>
+                <input id="txtPhoneNumber" type="tel" placeholder="Phone Number" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label for="selClothingTop" class="form-label">Clothing Top</label>
+                <select id="selClothingTop" class="form-select" required>
+                  <option value="">Choose a clothing top</option>
+                  <option value="hawaiian-shirt">Hawaiian Shirt</option>
+                  <option value="tank-top">Tank Top</option>
+                  <option value="t-shirt">T-Shirt</option>
+                  <option value="polo-shirt">Polo Shirt</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="selClothingBottom" class="form-label">Clothing Bottom</label>
+                <select id="selClothingBottom" class="form-select" required>
+                  <option value="">Choose a clothing bottom</option>
+                  <option value="cargo-shorts">Cargo Shorts</option>
+                  <option value="jeans">Jeans</option>
+                  <option value="sweatpants">Sweatpants</option>
+                  <option value="swim-trunks">Swim Trunks</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="selShoes" class="form-label">Shoes</label>
+                <select id="selShoes" class="form-select" required>
+                  <option value="">Choose a pair of shoes</option>
+                  <option value="crocs">Crocs</option>
+                  <option value="flip-flops">Flip Flops</option>
+                  <option value="sandals">Sandals</option>
+                  <option value="sneakers">Sneakers</option>
+                </select>
+              </div>
+              <button id="btnOrder" type="submit" class="btn btn-primary col-12 mt-2">Order</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    $('#btnSubmit').on('click',function(){
-      let strFirstName = $('#txtFirstName').val();
-      let strLastName = $('#txtLastName').val();
-      let strEmail = $('#txtEmail').val();
-      let strPassword = $('#txtPassword').val();
-      let strStreetAddress1 = $('#txtStreetAddress1').val();
-      let strStreetAddress2 = $('#txtStreetAddress2').val();
-      let strCity = $('#txtCity').val();
-      let strState = $('#txtState').val();
-      let strZIP = $('#txtZIP').val();
-      let strMobilePhone = $('#txtMobilePhone').val();
+    // Populate select boxes with web service data
+    $(document).ready(function() {
+      $.get("https://www.swollenhippo.com/getTopsByAPIKey.php?APIKey=Mickey2024!", function(data) {
+        let tops = JSON.parse(data);
+        let selectTop = $("#selClothingTop");
+        tops.forEach(function(top) {
+          selectTop.append(new Option(top.name, top.id));
+        });
+      });
 
-      let blnError = false;
-      let strErrorMessage = '';
-      if (strFirstName.length < 1) {
-        blnError = true;
-        strErrorMessage = strErrorMessage + 'First Name cannot be blank.';
-      }
-      if (strLastName.length < 1) {
-        blnError = true;
-        strErrorMessage = strErrorMessage + 'Last Name cannot be blank.';
-      }
-      if (strEmail.length < 1) {
-        blnError = true;
-        strErrorMessage = strErrorMessage + 'Email cannot be blank.';
-      }
-      if (strPassword.length < 1) {
-        blnError = true;
-        strErrorMessage = strErrorMessage + 'Password cannot be blank.';
-      }
-      if (strStreetAddress1.length < 1) {
-        blnError = true;
-        strErrorMessage = strErrorMessage + 'Street Address 1 cannot be blank.';
-      }
-      if (strCity.length < 1) {
-        blnError = true;
-        strErrorMessage = strErrorMessage + 'City cannot be blank.';
-      }
-      if (strState.length < 1) {
-        blnError = true;
-        strErrorMessage = strErrorMessage + 'State cannot be blank.';
-      }
-      if (strZIP.length < 1) {
-        blnError = true;
-        strErrorMessage = strErrorMessage + 'ZIP cannot be blank.';
-      }
-      if (strMobilePhone.length < 1) {
-        blnError = true;
-        strErrorMessage = strErrorMessage + 'Mobile Phone cannot be blank.';
-      }
+      $.get("https://www.swollenhippo.com/getBottomsByAPIKey.php?APIKey=Mickey2024!", function(data) {
+        let bottoms = JSON.parse(data);
+        let selectBottom = $("#selClothingBottom");
+        bottoms.forEach(function(bottom) {
+          selectBottom.append(new Option(bottom.name, bottom.id));
+        });
+      });
 
-      if (blnError == true) {
-        console.log(strErrorMessage);
-      } else {
-        console.log('no errors found');
-      }
-      console.log('hello ' + strFirstName);
-    })
-    $('#btnSubmit').on('click',function(){
-      $('#txtFirstName').val('');
-      $('#txtLastName').val('');
-      $('#txtEmail').val('');
-      $('#txtPassword').val('');
-    }
+      $.get("https://www.swollenhippo.com/getShoesByAPIKey.php?APIKey=Mickey2024!", function(data) {
+        let shoes = JSON.parse(data);
+        let selectShoes = $("#selShoes");
+        shoes.forEach(function(shoe) {
+          selectShoes.append(new Option(shoe.name, shoe.id));
+        });
+      });
+    });
+
+    // Handle form submission
+    $("#orderForm").submit(function(event) {
+      event.preventDefault();
+
+      let firstName = $("#txtFirstName").val();
+      let lastName = $("#txtLastName").val();
+      let email = $("#txtEmail").val();
+      let shippingAddress = $("#txtShippingAddress").val();
+      let billingAddress = $("#txtBillingAddress").val();
+      let phoneNumber = $("#txtPhoneNumber").val();
+      let clothingTop = $("#selClothingTop option:selected").text();
+      let clothingBottom = $("#selClothingBottom option:selected").text();
+      let shoes = $("#selShoes option:selected").text();
+
+      console.log("Customer Information:");
+      console.log("First Name: " + firstName);
+      console.log("Last Name: " + lastName);
+      console.log("Email Address: " + email);
+      console.log("Shipping Address: " + shippingAddress);
+      console.log("Billing Address: " + billingAddress);
+      console.log("Phone Number: " + phoneNumber);
+      console.log("Clothing Top: " + clothingTop);
+      console.log("Clothing Bottom: " + clothingBottom);
+      console.log("Shoes: " + shoes);
+
+      // Build order sheet
+      let orderSheet = `
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title">Order Sheet</h5>
+            <p><strong>Customer Information:</strong></p>
+            <p>First Name: ${firstName}</p>
+            <p>Last Name: ${lastName}</p>
+            <p>Email Address: ${email}</p>
+            <p>Shipping Address: ${shippingAddress}</p>
+            <p>Billing Address: ${billingAddress}</p>
+            <p>Phone Number: ${phoneNumber}</p>
+            <p><strong>Clothing Preferences:</strong></p>
+            <p>Clothing Top: ${clothingTop}</p>
+            <p>Clothing Bottom: ${clothingBottom}</p>
+            <p>Shoes: ${shoes}</p>
+            <button class="btn btn-danger" onclick="$(this).parent().parent().remove()">Remove Order Sheet</button>
+          </div>
+        </div>
+      `;
+      $("#orderSheets").append(orderSheet);
+
+      // Clear form fields
+      $("#orderForm")[0].reset();
+    });
   </script>
 </body>
 </html>
