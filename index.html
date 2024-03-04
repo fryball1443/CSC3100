@@ -1,92 +1,315 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SwollenHippo</title>
+    <title>Smart Coop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-
+<!--This Section of code formats -->
 <body class="bg-dark">
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title text-center mb-4">Observation</h2>
-                        <form id="observationForm">
-                            <div class="mb-3">
-                                <label for="txtTreeType" class="form-label">Tree Type</label>
-                                <input id="txtTreeType" placeholder="Tree Type" aria-label="Tree Type" class="form-control" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="selParkLocation" class="form-label">Park Location</label>
-                                <select id="selParkLocation" class="form-select" aria-label="Park Location"></select>
-                                    <option value="">Choose a park location</option>
-                                    <option value="hawaiian-shirt">Dogwood Park</option>
-                                    <option value="tank-top">West End Park</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="observationDate" class="form-label">Observation Date</label>
-                                <input type="date" id="observationDate" name="observationDate" class="form-control" aria-label="Observation Date">
-                            </div>
-                            <div class="mb-3">
-                                <label for="txtCurrentHealth" class="form-label">Current Health of the Tree</label>
-                                <textarea id="txtCurrentHealth" placeholder="Current Health" aria-label="Current Health" class="form-control" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary" aria-label="Add Observation Entry">Add Observation Entry</button>
-                                <button type="button" class="btn btn-secondary" aria-label="Cancel Observation Entry">Cancel Observation Entry</button>
-                            </div>
-                    </div>
-                </div>
+    <div class="vh-100 d-flex justify-content-center align-items-center" id="divMain"> 
+        <div class="card col-12 col-md-5 col-lg-4" id="divLogin">  
+            <!--This section of code sets up the formating for the card header.-->
+            <div class="card-header d-flex justify-content-center align-items-center">
+                <h3>Smart Coop Login</h3>
             </div>
-            <div class="col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="card">
-                        <img src="https://swollenhippo.com/female1.jpeg" class="card-img-top" alt="Forester's Picture" aria-label="Forester's Picture" style="max-width: 300px;">
-                        <div class="card-body">
-                            <h5 class="card-title" aria-label="Forester's Name">Jane Doe</h5>
-                            <ul class="list-unstyled">
-                                <li>
-                                    Telephone Number: 
-                                    <a href="tel:+19315262125" aria-label="Telephone Number">(931) 526-2125</a>
-                                </li>
-                            </ul>
-                        </div>
-                        
+            <!--This div tag contains the body of the login form.-->
+            <div class="card-body">
+                <form>
+                    <!--This div tag creates the text box for the email.-->
+                    <div class="form-group">
+                        <label for="txtLoginEmail" class="form-label">Email</label>
+                        <input id="txtLoginEmail" placeholder="Email" aria-label="Email" class="form-control">
                     </div>
-                </div>
+                    <!--This div tag creates the text box for the password.-->
+                    <div class="form-group">
+                        <label for="txtLoginPassword" class="form-label">Password</label>
+                        <input id="txtLoginPassword" placeholder="Password" aria-label="Password" class="form-control" type="password">
+                    </div>
+                    <!--This line of code creates the button for the user to login-->
+                    <button class="col-12 btn btn-success mt-4" id="btnLogin" type="button">Login</button> -->
+                    <!--This div tag creates the button for the user to toggle between the login form and registration form.-->
+                    <div class="col-12 d-flex justify-content-center">
+                        <a class="col-12 text-center btnToggle" data-card="Login">Need an Account?  Click Here</a>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-md-12 col-sm-12">
-                <div class="card">
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Observation Date</th>
-                                    <th>Location</th>
-                                    <th>Tree</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2024-02-28</td>
-                                    <td>Dogwood Park</td>
-                                    <td>Sugar Maple</td>
-                                </tr>
-                            </tbody>
-                        </table>                            
-                    </div>
-                </div>
+        <!--Card for the registration page.-->
+        <div class="card col-12 col-md-5 col-lg-4" id="divRegister" style="display:none;">
+            <!--Card header-->
+            <div class="card-header">
+                <h3>Registration</h3>
             </div>
+            <!--Card body-->
+            <div class="card-body">
+                <form>
+                    <!--Form section for entering email.-->
+                    <div class="form-group">
+                        <label for="txtEmail" class="form-label">Email</label>
+                        <input id="txtEmail"  placeholder="Email" aria-label="Email" class="form-control" type="email">
+                    </div>
+                    <!--Form section for entering password.-->
+                    <div class="form-group">
+                        <label for="txtPassword" class="form-label">Password</label>
+                        <input id="txtPassword"  placeholder="Password" aria-label="Password" class="form-control" type="password">
+                    </div>
+                    <!--Form section for entering first name.-->
+                    <div class="form-group">
+                        <label for="txtFirstName" class="form-label">First Name</label>
+                        <input id="txtFirstName"  placeholder="First Name" aria-label="First Name" class="form-control">
+                    </div>
+                    <!--Form section for entering last name.-->
+                    <div class="form-group">
+                        <label for="txtLastName" class="form-label">Last Name</label>
+                        <input id="txtLastName"  placeholder="Last Name" aria-label="Last Name" class="form-control">
+                    </div>
+                    <!--Form section for entering street address (first line).-->
+                    <div class="form-group">
+                        <label for="txtStreetAddress1" class="form-label">Street Address Line 1</label>
+                        <input id="txtStreetAddress1" placeholder="Street Address 1" aria-label="Street Address 1"  class="form-control">
+                    </div>
+                    <!--Form section for entering the street address (second line).-->
+                    <div class="form-group">
+                        <label for="txtStreetAddress2" class="form-label">Street Address Line 2</label>
+                        <input id="txtStreetAddress2"  placeholder="Street Address 2" aria-label="Street Address 2" class="form-control">
+                    </div>
+                    <!--Form section for entering city.-->
+                    <div class="form-group">
+                        <label for="txtCity" class="form-label">City</label>
+                        <input id="txtCity"  placeholder="City" aria-label="City" class="form-control">
+                    </div>
+                    <!--Form section for entering state.-->
+                    <div class="form-group">
+                        <label for="txtState" class="form-label">State</label>
+                        <input id="txtState"  placeholder="State" aria-label="State" class="form-control">
+                    </div>
+                    <!--Form section for entering zipcode.-->
+                    <div class="form-group">
+                        <label for="txtZipCode" class="form-label">Zip Code</label>
+                        <input id="txtZipCode"  placeholder="Zip Code" aria-label="Zip Code" class="form-control">
+                    </div>
+                    <!--Form section for entering the phone number.-->
+                    <div class="form-group">
+                        <label for="txtPhoneNumber" class="form-label">Phone Number</label>
+                        <input id="txtPhoneNumber"  placeholder="Phone Number" aria-label="Phone Number" class="form-control" type="tel" maxLength="18">
+                    </div>
+                    <!--Form section for entering Registration ID.-->
+                    <div class="form-group">
+                        <label for="txtRegistrationID" class="form-label">Coop Resgistration ID</label>
+                        <input id="txtRegistrationID" placeholder="Registration ID"  aria-label="Registration ID" class="form-control">
+                    </div>
+                    <!--Button to register with entered information 
+                        (will be validated in the JavaScript section.)-->
+                    <button class="col-12 btn btn-success mt-4" id="btnRegister" type="button">Register</button>
+                    <div class="col-12 d-flex justify-content-center">
+                        <!--Anchor element-->
+                        <a class="col-12 text-center btnToggle" data-card="Register">Cancel Registration and Return To Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Post_login dashboard creation/placeh-lder -->
+        <div class="card col-12 col-md-10 col-lg-9" id="divDashboard" style="display:none;">
+            <div class="card-header">
+                <h3>Dashboard</h3>
+            </div>
+            <div class="card-body">
+            </div>
+        </div>
         </div>
     </div>
+    <!-- Necessary scripts for jquery, bootstrap, and sweetalert -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    //When a button is clicked with the class btnToggle the function gathers the information from the Login and registration text boxes
+    $('.btnToggle').on('click',function(){
+            //Checks the data of the card and sets it to strCard
+            let strCard = $(this).attr('data-card')
+            //If the data-card is login
+            if (strCard == 'Login'){
+            //Switches the state of the login and register page
+                $('#divLogin').slideToggle(function(){
+                    $('#divRegister').slideToggle();                
+                })
+            //Gets the text box values of the Login text boxes and removes the visual height class
+                $('#txtLoginEmail').val('');
+                $('#txtLoginPassword').val('');
+                $('#divMain').removeClass('vh-100')
+            } else {
+            //If the data-card is register, toggle the state of login and register page
+                $('#divRegister').slideToggle(function(){
+                    $('#divLogin').slideToggle();
+                })
+            //Gets the value of each text b for the registraion page and removes vh class
+                $('#txtFirstName').val('');
+                $('#txtLastName').val('');
+                $('#txtEmail').val('');
+                $('#txtPassword').val('');
+                $('#txtRegistrationID').val('');
+                $('#txtStreetAddress1').val('');
+                $('#txtStreetAddress2').val('');
+                $('#txtCity').val('');
+                $('#txtState').val('');
+                $('#txtZipCode').val('');
+                $('#txtPhoneNumber').val('');
+                $('#divMain').addClass('vh-100');
+            }
+        })
+    
+    //On click of the button register
+    $('#btnRegister').on('click', function(){
+    //Initializes btnError and strError message to flase and empty
+        let blnError = false;
+        let strErrorMessage = '';
+
+        let strEmail = $('#txtEmail').val();
+        let strPassword = $('#txtPassword').val();
+        let strFirstName = $('#txtFirstName').val();
+        let strLastName = $('#txtLastName').val();
+        let strStreetAddress1 = $('#txtStreetAddress1').val();
+        let strStreetAddress2 = $('#txtStreetAddress2').val();
+        let strCity = $('#txtCity').val();
+        let strState = $('#txtState').val();
+        let strZipCode = $('#txtZipCode').val();
+        let strPhoneNumber = $('#txtPhoneNumber').val();
+        let strRegistrationID = $('#txtRegistrationID').val();
+
+        if(!strEmail.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
+            blnError = true;
+            strErrorMessage += '<p>Email must be valid. </p>';
+        }
+        if (strFirstName.length < 1){
+            blnError = true;
+            strErrorMessage = strErrorMessage + '<p>First Name cannot be blank.</p>';
+        }
+        if (strPassword.length < 6){
+            blnError = true;
+            strErrorMessage = strErrorMessage + '<p>Password has to be 6 or more characters.</p>';
+        }
+        if (strLastName.length < 1){
+            blnError = true;
+            strErrorMessage = strErrorMessage + '<p>Last Name cannot be blank. </p>';
+        }
+        if (strStreetAddress1.length < 1 && strStreetAddress2 < 1){
+            blnError = true;
+            strErrorMessage = strErrorMessage + '<p>Street address cannot be blank. </p>';
+        }
+        if (strPhoneNumber.length != 18){
+            blnError = true;
+            strErrorMessage = strErrorMessage + '<p>Mobile Number cannot be blank. </p>';
+        }
+        if (strRegistrationID != 3870){
+            blnError = true;
+            strErrorMessage = strErrorMessage + '<p>The registartion ID is incorrect. </p>';
+        }
+        if(blnError == true){
+                console.log(strErrorMessage);
+                Swal.fire({
+                    title: "Oops",
+                    html: strErrorMessage,
+                    icon: "error"
+                });
+            } else {
+                Swal.fire({
+                    title: "Successful Registered",
+                    text: 'You have successfully logged in!',
+                    icon: "success"
+                });
+                $('#divRegister').slideUp(function(){
+                    $('#divDashboard').slideDown();
+                })
+                console.log('No errors found');
+            }
+    })
+    //Click event for the Login Button
+    $('#btnLogin').on('click',function(){
+        //Creates variables to hold the user's email and password
+        let strLoginEmail = $('#txtLoginEmail').val();
+        let strLoginPassword = $('#txtLoginPassword').val();
+        //Initializes a boolean variable to check if the login credentials are valid
+        let blnError = false;
+
+        
+        
+        //Initializes an empty string variable to append the error message to
+        let strErrorMessage = '';
+        console.log(strLoginEmail);
+        console.log(strLoginPassword)
+
+        //Checks if strLoginEmail exists
+        if(strLoginEmail.length < 1) {
+            blnError = true;
+            strErrorMessage += '<p>Email cannot be blank.</p>';
+        //Ensures email matches specified format with the selected characters
+        } else if(!strLoginEmail.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)){
+            blnError = true;
+            strErrorMessage += '<p>Invalid Email.</p>';
+        }
+        //Password must be 6 or more characters
+        if (strLoginPassword.length < 6) { 
+            blnError = true;
+            strErrorMessage += '<p>Password must be at least 6 characters.</p>';
+        }
+        //Sends a sweet alter of error if blnError is true    
+        if(blnError == true){
+            Swal.fire({
+                title: 'Oops',
+                html: strErrorMessage,
+                icon: 'error'
+            });
+        } else{
+            //If verification passes, slide down login page and slide up dashboard page
+            $('#divLogin').slideUp(function(){
+                $('#divDashboard').slideDown();
+            })
+        }
+    })
+                
+//On a key click, set var phoneNumber to the Phone Number text box and sent the value to the phoneFormat function
+document.getElementById('txtPhoneNumber').addEventListener('keyup',function(evt){
+    var phoneNumber = document.getElementById('txtPhoneNumber');
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    phoneNumber.value = phoneFormat(phoneNumber.value);
+});
+
+// We need to manually format the phone number on page load
+document.getElementById('txtPhoneNumber').value = phoneFormat(document.getElementById('txtPhoneNumber').value);
+
+// A function to determine if the pressed key is an integer
+function numberPressed(evt){
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if(charCode > 31 && (charCode < 48 || charCode > 57) && (charCode < 36 || charCode > 40)){
+                return false;
+        }
+        return true;
+}
+
+// A function to format text to look like a phone number
+function phoneFormat(input){
+        // Strip all characters from the input except digits
+        input = input.replace(/\D/g,'');
+        
+        // Trim the remaining input to ten characters, to preserve phone number format
+        input = input.substring(0,10);
+
+        // Based upon the length of the string, we add formatting as necessary
+        var size = input.length;
+        if(size == 0){
+                input = input;
+        }else if(size < 4){
+                input = '('+input;
+        }else if(size < 7){
+                input = '('+input.substring(0,3)+') - '+input.substring(3,6);
+        }else{
+                input = '('+input.substring(0,3)+') - '+input.substring(3,6)+' - '+input.substring(6,10);
+        }
+        return input; 
+}
+    </script>
+    </body>
+    </html>
