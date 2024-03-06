@@ -1,15 +1,53 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Coop</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!--Content delivery network for Bootstrap stylesheet.-->
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
 </head>
-<!--This Section of code formats -->
+<!--This Section of code formats the body of the file.-->
 <body class="bg-dark">
-    <div class="vh-100 d-flex justify-content-center align-items-center" id="divMain"> 
+
+    <!--<div class="vh-100 d-flex justify-content-center align-items-center">
+    <img src="https://plus.unsplash.com/premium_photo-1664527009217-7ab29b61bd3f?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGNoaWNrZW4lMjBjb29wfGVufDB8fDB8fHww" alt="plus.unsplash.com" style="width:100px;height:100px">
+    </div>
+    -->
+    <!-- The navigation bar -->
+        <nav class="navbar navbar-expand-lg bg-success" data-bs-theme="dark">
+            <div class="container-fluid">
+                <!-- The brand logo -->
+                <a class="navbar-brand" href="#">Smart Coop</a>
+                <!-- The toggle button for collapsing the navigation links -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <!-- The home link -->
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        <!-- The account dropdown. I tried to make it so it is aligned to the right, but it kept breaking. -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
+                            <!-- The dropdown menu for account options. Currently both buttons do the same thing as each other, because it uses our existing login/signup button code. -->
+                            <div class="dropdown-menu">
+                                <!-- The login option -->
+                                <a class="dropdown-item btnToggle" href="#">Login</a>
+                                <!-- The sign up option -->
+                                <a class="dropdown-item btnToggle" href="#">Sign Up</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      
+    <div class="d-flex justify-content-center align-items-center vh-100" id="divMain"> 
         <div class="card col-12 col-md-5 col-lg-4" id="divLogin">  
             <!--This section of code sets up the formating for the card header.-->
             <div class="card-header d-flex justify-content-center align-items-center">
@@ -29,7 +67,7 @@
                         <input id="txtLoginPassword" placeholder="Password" aria-label="Password" class="form-control" type="password">
                     </div>
                     <!--This line of code creates the button for the user to login-->
-                    <button class="col-12 btn btn-success mt-4" id="btnLogin" type="button">Login</button> -->
+                    <button class="col-12 btn btn-success" id="btnLogin" type="button">Login</button> -->
                     <!--This div tag creates the button for the user to toggle between the login form and registration form.-->
                     <div class="col-12 d-flex justify-content-center">
                         <a class="col-12 text-center btnToggle" data-card="Login">Need an Account?  Click Here</a>
@@ -98,20 +136,20 @@
                     </div>
                     <!--Form section for entering Registration ID.-->
                     <div class="form-group">
-                        <label for="txtRegistrationID" class="form-label">Coop Resgistration ID</label>
+                        <label for="txtRegistrationID" class="form-label">Coop Registration ID</label>
                         <input id="txtRegistrationID" placeholder="Registration ID"  aria-label="Registration ID" class="form-control">
                     </div>
                     <!--Button to register with entered information 
                         (will be validated in the JavaScript section.)-->
                     <button class="col-12 btn btn-success mt-4" id="btnRegister" type="button">Register</button>
                     <div class="col-12 d-flex justify-content-center">
-                        <!--Anchor element-->
+                        <!--Anchor element to cancel registration and switch to login page.-->
                         <a class="col-12 text-center btnToggle" data-card="Register">Cancel Registration and Return To Login</a>
                     </div>
                 </form>
             </div>
         </div>
-        <!-- Post_login dashboard creation/placeh-lder -->
+        <!-- Post_login dashboard creation/placeholder -->
         <div class="card col-12 col-md-10 col-lg-9" id="divDashboard" style="display:none;">
             <div class="card-header">
                 <h3>Dashboard</h3>
@@ -145,7 +183,7 @@
                 $('#divRegister').slideToggle(function(){
                     $('#divLogin').slideToggle();
                 })
-            //Gets the value of each text b for the registraion page and removes vh class
+            //Gets the value of each text box for the registraion page and adds vh class
                 $('#txtFirstName').val('');
                 $('#txtLastName').val('');
                 $('#txtEmail').val('');
@@ -167,46 +205,57 @@
         let blnError = false;
         let strErrorMessage = '';
 
+    //Sets scoped variable of str(Variable) to the the values in the text boxes in register
         let strEmail = $('#txtEmail').val();
         let strPassword = $('#txtPassword').val();
         let strFirstName = $('#txtFirstName').val();
         let strLastName = $('#txtLastName').val();
-        let strStreetAddress1 = $('#txtStreetAddress1').val();
-        let strStreetAddress2 = $('#txtStreetAddress2').val();
+        let strStreetAddress = $('#txtStreetAddress1').val() + " " + $('#txtStreetAddress2').val()
+        console.log(strStreetAddress)
         let strCity = $('#txtCity').val();
         let strState = $('#txtState').val();
         let strZipCode = $('#txtZipCode').val();
         let strPhoneNumber = $('#txtPhoneNumber').val();
         let strRegistrationID = $('#txtRegistrationID').val();
-
+    
+        //Checks if the email follows the selected format
         if(!strEmail.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
             blnError = true;
             strErrorMessage += '<p>Email must be valid. </p>';
         }
+        //Ensures that the first name txt box is blank
         if (strFirstName.length < 1){
             blnError = true;
             strErrorMessage = strErrorMessage + '<p>First Name cannot be blank.</p>';
         }
+        //Password must be 6 or more characters
         if (strPassword.length < 6){
             blnError = true;
             strErrorMessage = strErrorMessage + '<p>Password has to be 6 or more characters.</p>';
         }
+        //Ensures that the last name txt box is blank
         if (strLastName.length < 1){
             blnError = true;
             strErrorMessage = strErrorMessage + '<p>Last Name cannot be blank. </p>';
         }
-        if (strStreetAddress1.length < 1 && strStreetAddress2 < 1){
+        //Ensures that the streetAddress1 txt box is blank
+        if (strStreetAddress.length < 2){
             blnError = true;
-            strErrorMessage = strErrorMessage + '<p>Street address cannot be blank. </p>';
+            strErrorMessage = strErrorMessage + '<p>Street address 1 cannot be blank. </p>';
         }
+        //Ensures phone number is fully filled out and follows appropriate formula
         if (strPhoneNumber.length != 18){
             blnError = true;
             strErrorMessage = strErrorMessage + '<p>Mobile Number cannot be blank. </p>';
         }
+        //Checks if registration ID is 3870
         if (strRegistrationID != 3870){
             blnError = true;
             strErrorMessage = strErrorMessage + '<p>The registartion ID is incorrect. </p>';
         }
+        //Dispalys sweet alert if any of the conditional error statements were triggered as error
+        // This if else block checks to see if there is an error then pops up
+        // with an appropriate sweet alert message
         if(blnError == true){
                 console.log(strErrorMessage);
                 Swal.fire({
@@ -215,11 +264,13 @@
                     icon: "error"
                 });
             } else {
+            //Displays success if there are no errors in the input validation
                 Swal.fire({
                     title: "Successful Registered",
                     text: 'You have successfully logged in!',
                     icon: "success"
                 });
+            //If success, slide register up and slide up dashboard
                 $('#divRegister').slideUp(function(){
                     $('#divDashboard').slideDown();
                 })
