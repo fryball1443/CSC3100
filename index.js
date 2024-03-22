@@ -6,14 +6,22 @@ console.log("Listening on port " + HTTP_PORT);
 var app = express();
 app.use(cors());
 
+class Fruit {
+  constructor(strName, strColor){
+    this.name = strName;
+    this.color = strColor;
+  }
+}
+
 var arrFruit = [];
-let objBanana = {name:'banana',color:'yellow'};
-let objApple = {name:'apple',color:'red'};
-let objGrape = {name:'grape',color:'purple'};
+let objBanana = new Fruit('banana','yellow')
+let objApple = new Fruit('apple','red');
+let objGrape = new Fruit('grape','purple');
 arrFruit.push(objBanana);
 arrFruit.push(objApple);
 arrFruit.push(objGrape);
-app.get("/", (req,res,next) => {
+arrFruit.push(new Fruit('kiwi', 'brown'));
+app.get("/fruit", (req,res,next) => {
     let strFruit = req.query.fruit;
     console.log("Routed to base route");
     console.log(strFruit);
@@ -23,6 +31,13 @@ app.get("/", (req,res,next) => {
         }
     })
     res.status(200).send('{"message":"Fruit not found"}');
+})
+
+app.post("/fruit", (req, res, next) => {
+  let strName = req.query.name;
+  let strColor = req.query.color;
+  arrFruit.push(new Fruit(strName,strColor));
+  res.status(201).send(arrFruit);
 })
 
 app.get("/hello", (req,res,next) => {
