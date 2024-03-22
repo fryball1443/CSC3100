@@ -33,12 +33,12 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- The account dropdown aligned to the right -->
+                        <!-- The account dropdown. I tried to make it so it is aligned to the right, but it kept breaking. -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
-                            <!-- The dropdown menu for account options -->
-                            <div class="dropdown-menu dropdown-menu-end">
+                            <!-- The dropdown menu for account options. Currently both buttons do the same thing as each other, because it uses our existing login/signup button code. -->
+                            <div class="dropdown-menu">
                                 <!-- The login option -->
                                 <!--The data-card attribute needs to be Register for this link so that 
                                     it will only work if the Registration card is showing.-->
@@ -355,11 +355,12 @@
             blnError = true;
             strErrorMessage += '<p>Email must be valid. </p>';
         }
-        $.getJSON('https://simplecoop.swollenhippo.com/users.php', {Email}, function(result) {
+        $.getJSON('https://simplecoop.swollenhippo.com/users.php', {Email:('Email')}, function(result) {
             const arrUsers = Array.from(result)
 
             arrUsers.forEach(strUserDetail)
             {
+                //iterates through users to check if email is in use
                 if(strCoopDetail.Email == strEmail)
                 {
                     blnError = true;
@@ -499,15 +500,14 @@
             blnError = true;
             strErrorMessage += '<p>Invalid Email.</p>';
         }
-        $.getJSON('https://simplecoop.swollenhippo.com/users.php', function(result) {
-            const arrUsers = Array.from(result);
-            arrUsers.forEach(function(strUserDetail) {
+        $.getJSON('https://simplecoop.swollenhippo.com/users.php', {Email:strLoginEmail}, function(result) {
+            //Compares the password to the username and if it matches it will allow Login.
                 console.log('Email: ' + strUserDetail.Email + ' ' + 'Password: ' + strUserDetail.Password)
-                /*if(strUserDetail.Email == strEmail && strUserDetail.Password == strPassword)
+                if(result.Password == strLoginPassword)
                 {
                     checkEmailandPassword = true;
                 }
-                */
+                
             })
         })
         /*$.getJSON('https://www.swollenhippo.com/getShoesByAPIKey.php?APIKey=Mickey2024!',function(result){ //Gets shoes information and adds to select box based of the description from the url
@@ -544,8 +544,22 @@
                 $('#navRegister').attr('data-card', 'Dashboard');
             })
         }
+    // Remove extra closing parentheses
+    $('#btnLogout').on('click', function(){
+    $.ajax({
+            url: 'https://simplecoop.swollenhippo.com/sessions.php',
+            type: 'DELETE',
+            data: {SessionID:sessionStorage.getItem('SessionID')},
+            success: function(result) {
+                // remove the SessionID item from the browsers Session Storage
+                console.log("Logout button clicked")
+                sessionStorage.removeItem('SessionID');
+                $('#divDashboard').slideUp(function(){
+                    $('#divLogin').slideDown();
+                }) 
+            }
+        });
     })
-
 //On a key click, set var phoneNumber to the Phone Number text box and sent the value to the phoneFormat function
 document.getElementById('txtPhoneNumber').addEventListener('keyup',function(evt){
     var phoneNumber = document.getElementById('txtPhoneNumber');
